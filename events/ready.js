@@ -34,8 +34,8 @@ const ready = {
         await sleep(2000); // attends 1 seconde avant de recommencer la boucle
       }
     } catch (err) {
-      console.error(err);
-      // Utilisez `client` pour envoyer un message d'erreur, par exemple
+      console.error("Erreur rencontrée:", err.message);
+      console.error("Trace de la pile:", err.stack);
       const channel = client.channels.cache.get('1091352558083252234');
       channel.send(`Attention <@280514098599428097>, le bot a crash`);
     }
