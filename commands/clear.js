@@ -1,6 +1,6 @@
 import {SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder} from 'discord.js';
 
-module.exports = {
+const command = {
     data: new SlashCommandBuilder()
     .setName("clear")
     .setDescription("Supprime un montant spécifique depuis un channel ciblé.")
@@ -54,3 +54,5 @@ module.exports = {
         }
     }
 }
+
+export default command;

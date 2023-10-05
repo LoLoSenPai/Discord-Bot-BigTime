@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, EmbedBuilder, ChannelType } from "discord.js";
 
-module.exports = {
+const poll = {
     data: new SlashCommandBuilder()
         .setName("poll")
         .setDescription("Créer un sondage et l'envoyer dans un channel")
@@ -37,3 +37,5 @@ module.exports = {
         }
     }
 }
+
+export default poll;

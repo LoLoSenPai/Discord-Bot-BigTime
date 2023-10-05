@@ -5,12 +5,12 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // fonction pour mettre en pause l'exécution du programme pendant un certain temps
-module.exports.sleep = async function sleep(ms) {
+export async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
-};
+}
 
 // fonction pour récupérer tous les listings depuis l'API OpenLoot
-module.exports.fetchAllListings = async function () {
+export async function fetchAllListings () {
   console.log("Récupération des listings en cours...");
   const pageSize = 200;
   let currentPage = 1;
@@ -46,12 +46,13 @@ module.exports.fetchAllListings = async function () {
       console.log("Response body:", await err.response.text());
     }
   }
-  listings = listings.filter(item => Object.prototype.hasOwnProperty.call(item, 'minPrice'));
+  // listings = listings.filter(item => Object.prototype.hasOwnProperty.call(item, 'minPrice'));
+  listings = listings.filter(item => Object.hasOwn.call(item, 'minPrice'));
   return listings;
-};
+}
 
 // fonction pour ajouter des informations supplémentaires aux listings
-module.exports.addExtraInfoToListings = async function (listings) {
+export async function addExtraInfoToListings (listings) {
   console.log("Récupération des informations supplémentaires en cours...");
 
   const filteredListings = [];
@@ -132,11 +133,11 @@ module.exports.addExtraInfoToListings = async function (listings) {
   console.log(`${filteredListings.length} objets ont été filtrés.`);
   console.log(filteredListings);
   return filteredListings;
-};
+}
 
 
 // fonction pour mettre à jour la base de données avec les nouveaux listings
-module.exports.updateDatabase = async function (listingsWithExtraInfo, client) {
+export async function updateDatabase (listingsWithExtraInfo, client) {
   if (listingsWithExtraInfo.length === 0) {
     console.log("Aucun objet à mettre à jour.");
     return;
@@ -348,4 +349,4 @@ module.exports.updateDatabase = async function (listingsWithExtraInfo, client) {
     }
   });
   console.log("Calcul terminé");
-};
+}

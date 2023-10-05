@@ -5,7 +5,7 @@ import { fetchAllListings, addExtraInfoToListings, updateDatabase, sleep } from 
 
 dotenv.config();
 
-module.exports = {
+const ready = {
   name: "ready",
   once: true,
   async execute(client) {
@@ -41,3 +41,5 @@ module.exports = {
     }
   },
 };
+
+export default ready;

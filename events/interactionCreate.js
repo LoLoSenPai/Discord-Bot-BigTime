@@ -1,5 +1,5 @@
 
-module.exports = {
+const interactionCreate = {
   name: "interactionCreate",
   async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
@@ -19,6 +19,8 @@ module.exports = {
     }
   },
 };
+
+export default interactionCreate;
 
 // if (interaction.isButton()) {
 //   if (interaction.customId === "openloot") {
