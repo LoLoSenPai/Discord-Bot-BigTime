@@ -1,32 +1,24 @@
 {
-  "name": "botv2",
+  "name": "discord-bot",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "LoLo Labs",
   "license": "ISC",
   "keywords": [],
   "description": "",
   "dependencies": {
-    "@keyv/mongo": "^2.1.6",
+    "axios": "^1.3.4",
     "discord.js": "^14.4.0",
     "dotenv": "^16.0.3",
-    "glob": "7.2.0",
-    "keyv": "^4.5.0",
     "mongoose": "^6.6.4",
-    "mysql": "^2.18.1",
     "node-fetch": "^3.2.10",
     "node.js": "^0.0.1-security",
-    "sequelize": "^6.24.0",
-    "sqlite3": "^5.1.2",
-    "ts": "^0.2.2",
-    "ts-node": "^10.9.1",
-    "undici": "5.10.0"
+    "undici": "^5.21.0"
   },
   "devDependencies": {
-    "@types/node": "^18.11.3",
     "eslint": "8.23.1"
   }
 }
