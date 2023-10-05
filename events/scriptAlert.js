@@ -1,6 +1,8 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require("discord.js");
-const Item = require("../models/listing");
-require("dotenv").config();
+import { EmbedBuilder, ButtonBuilder, ActionRowBuilder } from 'discord.js';
+import Item from '../models/listing.js';  // Notez que l'extension `.js` peut être nécessaire pour les imports locaux
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // fonction pour mettre en pause l'exécution du programme pendant un certain temps
 module.exports.sleep = async function sleep(ms) {

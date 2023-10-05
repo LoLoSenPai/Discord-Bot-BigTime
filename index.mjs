@@ -1,13 +1,11 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const fetch = require("node-fetch");
-const {
-  Client,
-  Collection,
-  GatewayIntentBits,
-  Partials,
-} = require("discord.js");
-require("dotenv").config();
+import fs from 'node:fs';
+import path from 'node:path';
+import fetch from 'node-fetch';
+import { Client, Collection, GatewayIntentBits, Partials } from 'discord.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 
 const client = new Client({
   intents: [

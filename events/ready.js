@@ -1,7 +1,9 @@
 /* eslint-disable no-constant-condition */
-require("dotenv").config();
-const mongoose = require("mongoose");
-const { fetchAllListings, addExtraInfoToListings, updateDatabase, sleep } = require("./scriptAlert");
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import { fetchAllListings, addExtraInfoToListings, updateDatabase, sleep } from './scriptAlert.js';  // L'extension `.js` est nécessaire pour les imports locaux
+
+dotenv.config();
 
 module.exports = {
   name: "ready",
