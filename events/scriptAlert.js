@@ -1,5 +1,6 @@
 import { EmbedBuilder, ButtonBuilder, ActionRowBuilder } from 'discord.js';
 import Item from '../models/listing.js';  // Notez que l'extension `.js` peut être nécessaire pour les imports locaux
+import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 
 dotenv.config();
