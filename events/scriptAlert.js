@@ -25,9 +25,9 @@ export async function fetchAllListings() {
 
       const response = await fetch(url);
       if (!response.ok) {
-        const text = await response.text();
-        console.error('Error response from API:', text);
-        throw new Error('API responded with an error.');
+        // Afficher le contenu de la réponse en cas d'erreur
+        console.error("Error response from API:", await response.text());
+        return; // Sortez de la fonction si l'API renvoie une erreur
       }
       const jsonResponse = await response.json();
       if (response.ok) {
