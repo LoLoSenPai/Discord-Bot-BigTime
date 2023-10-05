@@ -48,7 +48,7 @@ export async function fetchAllListings() {
     );
   } catch (err) {
     console.log("Error during API call:", err.message);
-    if (err.response) {
+    if (err.response && typeof err.response.text === 'function') {
       console.log("Response body:", await err.response.text());
     }
   }
