@@ -11,7 +11,7 @@ export async function sleep(ms) {
 }
 
 // fonction pour récupérer tous les listings depuis l'API OpenLoot
-export async function fetchAllListings () {
+export async function fetchAllListings() {
   console.log("Récupération des listings en cours...");
   const pageSize = 200;
   let currentPage = 1;
@@ -20,10 +20,15 @@ export async function fetchAllListings () {
 
   try {
     while (currentPage <= totalPages) {
-      await new Promise((resolve) => setTimeout(resolve, 1300));
+      await new Promise((resolve) => setTimeout(resolve, 2300));
       const url = `https://openloot.com/api/v2/market/listings?pageSize=${pageSize}&page=${currentPage}`;
 
       const response = await fetch(url);
+      if (!response.ok) {
+        const text = await response.text();
+        console.error('Error response from API:', text);
+        throw new Error('API responded with an error.');
+      }
       const jsonResponse = await response.json();
       if (response.ok) {
         listings.push(...jsonResponse.items);
@@ -32,7 +37,7 @@ export async function fetchAllListings () {
         console.log(
           `Fetched ${listings.length} out of ${jsonResponse.totalItems} listings`
         );
-        await new Promise((resolve) => setTimeout(resolve, 1300)); // Ajout d'une pause de 1.3 secondes entre chaque requête
+        await new Promise((resolve) => setTimeout(resolve, 2300)); // Ajout d'une pause de 1.3 secondes entre chaque requête
       } else {
         console.log(`Error ${response.status}: ${response.statusText}`);
       }
@@ -53,7 +58,7 @@ export async function fetchAllListings () {
 }
 
 // fonction pour ajouter des informations supplémentaires aux listings
-export async function addExtraInfoToListings (listings) {
+export async function addExtraInfoToListings(listings) {
   console.log("Récupération des informations supplémentaires en cours...");
 
   const filteredListings = [];
@@ -109,7 +114,7 @@ export async function addExtraInfoToListings (listings) {
 
         try {
           const response = await fetch(url);
-          await new Promise((resolve) => setTimeout(resolve, 500));
+          await new Promise((resolve) => setTimeout(resolve, 2000));
           console.log(`Pause d'une demi seconde entre chaque requête`);
           const jsonResponse = await response.json();
           const archetypeItem = jsonResponse.items[0];
@@ -138,7 +143,7 @@ export async function addExtraInfoToListings (listings) {
 
 
 // fonction pour mettre à jour la base de données avec les nouveaux listings
-export async function updateDatabase (listingsWithExtraInfo, client) {
+export async function updateDatabase(listingsWithExtraInfo, client) {
   if (listingsWithExtraInfo.length === 0) {
     console.log("Aucun objet à mettre à jour.");
     return;

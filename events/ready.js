@@ -31,7 +31,7 @@ const ready = {
         await updateDatabase(listingsWithExtraInfo, client);
 
         console.log(`\n------PAUSE DE 1 SEC AVANT LA BOUCLE------`);
-        await sleep(1000); // attends 1 seconde avant de recommencer la boucle
+        await sleep(2000); // attends 1 seconde avant de recommencer la boucle
       }
     } catch (err) {
       console.error(err);
