@@ -30,12 +30,14 @@ const eventFiles = fs
 
 for (const file of eventFiles) {
   const filePath = path.join(eventsPath, file);
-  const event = require(filePath);
-  if (event.once) {
-    client.once(event.name, (...args) => event.execute(...args));
-  } else {
-    client.on(event.name, (...args) => event.execute(...args));
-  }
+  import(filePath).then(module => {
+    const event = module.default;
+    if (event.once) {
+      client.once(event.name, (...args) => event.execute(...args));
+    } else {
+      client.on(event.name, (...args) => event.execute(...args));
+    }
+  });
 }
 
 client.commands = new Collection();
@@ -46,8 +48,10 @@ const commandFiles = fs
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
-  const command = require(filePath);
-  client.commands.set(command.data.name, command);
+  import(filePath).then(module => {
+    const command = module.default;
+    client.commands.set(command.data.name, command);
+  });
 }
 
 const symbols = [
