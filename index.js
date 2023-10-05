@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const __dirname = new URL('.', import.meta.url).pathname;
 
 const client = new Client({
   intents: [
