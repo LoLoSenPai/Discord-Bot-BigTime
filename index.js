@@ -32,6 +32,10 @@ for (const file of eventFiles) {
   const filePath = path.join(eventsPath, file);
   import(filePath).then(module => {
     const event = module.default;
+    if (!event) {
+      console.error(`Erreur lors de l'importation de l'événement depuis ${file}. Aucun événement exporté par défaut.`);
+      return;
+    }
     if (event.once) {
       client.once(event.name, (...args) => event.execute(...args));
     } else {

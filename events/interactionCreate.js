@@ -1,6 +1,7 @@
 
 const interactionCreate = {
   name: "interactionCreate",
+  once: false,
   async execute(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
