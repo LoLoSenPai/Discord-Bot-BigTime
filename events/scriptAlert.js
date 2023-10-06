@@ -20,7 +20,7 @@ export async function fetchAllListings() {
 
   try {
     while (currentPage <= totalPages) {
-      await new Promise((resolve) => setTimeout(resolve, 2300));
+      await new Promise((resolve) => setTimeout(resolve, 1300));
       const url = `https://api.openloot.com/v2/market/listings?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&onSale=true&sort=name%3Aasc&pageSize=${pageSize}&page=${currentPage}`;
 
       const response = await fetch(url);
@@ -37,7 +37,7 @@ export async function fetchAllListings() {
         console.log(
           `Fetched ${listings.length} out of ${jsonResponse.totalItems} listings`
         );
-        await new Promise((resolve) => setTimeout(resolve, 2300)); // Ajout d'une pause de 1.3 secondes entre chaque requête
+        await new Promise((resolve) => setTimeout(resolve, 1300)); // Ajout d'une pause de 1.3 secondes entre chaque requête
       } else {
         console.log(`Error ${response.status}: ${response.statusText}`);
       }
@@ -108,7 +108,7 @@ export async function addExtraInfoToListings(listings) {
         const url = `https://api.openloot.com/v2/market/listings/${archetypeId}/items?onSale=true&page=1&pageSize=48&sort=price%3Aasc`;
 
         const response = await fetch(url);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
         console.log(`Pause d'une demi seconde entre chaque requête`);
 
         if (response.status !== 200) {
