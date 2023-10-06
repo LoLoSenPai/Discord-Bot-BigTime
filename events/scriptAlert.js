@@ -52,8 +52,8 @@ export async function fetchAllListings() {
       console.log("Response body:", await err.response.text());
     }
   }
-  // listings = listings.filter(item => Object.prototype.hasOwnProperty.call(item, 'minPrice'));
-  listings = listings.filter(item => Object.hasOwn.call(item, 'minPrice'));
+  listings = listings.filter(item => Object.prototype.hasOwnProperty.call(item, 'minPrice'));
+  // listings = listings.filter(item => Object.hasOwn.call(item, 'minPrice'));
   return listings;
 }
 
