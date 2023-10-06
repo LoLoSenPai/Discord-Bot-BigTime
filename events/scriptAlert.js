@@ -99,11 +99,6 @@ export async function addExtraInfoToListings(listings) {
         // Si le prix minimum est le même, on ne fait rien
       } else if (itemInDb.minPrice === minPrice) {
         continue;
-        // console.log(
-        //   `${i + j + 1} of ${
-        //     listings.length
-        //   } Item ${name} trouvé dans la base de données`
-        // );
       } else if (!archetypeId) {
         console.log(
           `${i + j + 1} of ${listings.length
@@ -112,10 +107,16 @@ export async function addExtraInfoToListings(listings) {
       } else {
         const url = `https://api.openloot.com/v2/market/listings/${archetypeId}/items?onSale=true&page=1&pageSize=48&sort=price%3Aasc`;
 
-        try {
           const response = await fetch(url);
           await new Promise((resolve) => setTimeout(resolve, 2000));
           console.log(`Pause d'une demi seconde entre chaque requête`);
+
+          if (response.status !== 200) {
+            console.error(`Error ${response.status}: ${await response.text()}`);
+            continue; // Passer à l'article suivant
+          }
+          
+        try {
           const jsonResponse = await response.json();
           const archetypeItem = jsonResponse.items[0];
           const idBis = archetypeItem.id;
