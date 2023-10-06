@@ -21,7 +21,7 @@ export async function fetchAllListings() {
   try {
     while (currentPage <= totalPages) {
       await new Promise((resolve) => setTimeout(resolve, 2300));
-      const url = `https://api.openloot.com/v2/market/listings?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&onSale=true&page=1&sort=name%3Aasc&pageSize=${pageSize}&page=${currentPage}`;
+      const url = `https://api.openloot.com/v2/market/listings?gameId=56a149cf-f146-487a-8a1c-58dc9ff3a15c&onSale=true&sort=name%3Aasc&pageSize=${pageSize}&page=${currentPage}`;
 
       const response = await fetch(url);
       if (!response.ok) {
